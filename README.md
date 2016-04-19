@@ -1,5 +1,5 @@
 # AVC-2016-Team-6
-
+####ENGR AVC Wiki: https://github.com/kaiwhata/ENGR101-2016/wiki
 ###Week 1 Checklist
 - [ ] Everyone: Review Week 1 checklist.
 - [ ] Santhu: Finishing plan (checked by David).
