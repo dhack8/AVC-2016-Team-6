@@ -10,4 +10,5 @@
 - [ ] Chris: Explain the frankenstein prototpye to codders.
 - [ ] Santhu & Tim: Wheel moving, (maybe at the same time :P).
 - [ ] David: Check all this stuff is done.
-- [ ] Max &Chris: Plan next prototype, Maybe check with codders about what there needs are/ problems with first prototype.
+- [ ] Max & Chris: Plan next prototype, Maybe check with codders about what there needs are/ problems with first prototype.
+- [ ] David: Figure out what the hell we can do in week 2!
