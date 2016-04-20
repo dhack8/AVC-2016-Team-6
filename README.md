@@ -4,7 +4,7 @@
 - [ ] Everyone: Review Week 1 checklist.
 - [ ] Santhu: Finishing plan (checked by David).
 - [ ] David: Figure out room availabilty.
-- [ ] Tim: Read up on gate opening shit.
+- [ ] Tim: Read up on gate opening stuff.
 - [ ] Max & Chris: Fabrication of prototype robot.
 - [ ] Santhu & Tim: SSH thing ?
 - [ ] Chris: Explain the frankenstein prototpye to codders.
