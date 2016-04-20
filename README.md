@@ -6,7 +6,7 @@
 - [x] David: Figure out room availabilty.
 - [ ] Tim: Read up on gate opening stuff.
 - [ ] Max & Chris: Fabrication of prototype robot.
-- [ ] Santhu & Tim: Learning how to SSH into the Raspberry Pi from another computer. (Learn also about gitclone)
+- [x] Santhu & Tim: Learning how to SSH into the Raspberry Pi from another computer. (Learn also about gitclone)
 - [ ] Chris: Explain the frankenstein prototpye to coders.
 - [ ] Santhu & Tim: Get both wheels to turn (also potentially figure out primitive turning by making them go in opposite directions)
 - [ ] David: Check all this stuff is done.
