@@ -34,6 +34,7 @@ To be filled out.
 - [ ] Santhu & Tim: Play around with distance sensors to see how they work.
 - [ ] Tim: make gate open.
 - [ ] Chris & Max: Fabricate 2nd prototype.
+- [ ] Chris & Max: Your workload might be light this week, so once youve done the prototype see where else you can help out.
 - [ ] David: Refine code for first 3 Quadrants.
 - [ ] David: Start code for maze.
 - [ ] Everyone: Actually get robot on board for first trial run.
