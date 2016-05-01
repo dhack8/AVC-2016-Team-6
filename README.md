@@ -17,7 +17,23 @@
 Everything appears to have been completed, no problems
 
 ###Week 2 Checklist
-- [ ] Codders: Play around with code that you tink will help, think about the problem in your showers :)
+- [ ] Codders: Play around with code that you think will help, think about the problem in your showers :)
 - [ ] Hardware: Plan 2nd prototype completetly so its ready to be fabricated first week back.
 
 This weeks task a rather light due to the fact that none of us can get hands on with the hardware, which makes it difficult for both parties to be super porductive.
+
+###Week 2 Review
+To be filled out.
+
+###Week 3 Checklist
+- [ ] Everyone: This is week 3 !, in the plan we said we would finish quads 1 & 2 this week.
+- [ ] Santhu & Tim: Make robot perform 90 degree turns to the right and left.
+- [ ] Santhu & Tim: Make robot perform 180 degree turns to the right and left.
+- [ ] Santhu & Tim: Make robot perform slight left and right turns while still going forwards (use multiplier like we will with the error signal).
+- [ ] Santhu & Tim: Once you get all the turns working show David.
+- [ ] Santhu & Tim: Play around with distance sensors to see how they work.
+- [ ] Tim: make gate open.
+- [ ] Chris & Max: Fabricate 2nd prototype.
+- [ ] David: Refine code for first 3 Quadrants.
+- [ ] David: Start code for maze.
+- [ ] Everyone: Actually get robot on board for first trial run.
