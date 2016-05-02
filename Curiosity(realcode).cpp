@@ -19,28 +19,43 @@ int main(){
   int sum = 0;
   int error = 0;
   int range = 0;
-  int pixelWidth = 0;
-  
+  int pixel = 0;
+  int minP = 319;
+  int maxP = 0;
   int center = 160;
-  
   
   while(true){
   
-  while(pixelWidth < 320){
-    int pixelHeight = 0;
-    while(pixelHeight < 240){
+  for(pixelWidth = 0; pixelWidth < 160; pixelWidth++){
+    for(pixelHeight = 0; pixelHeight < 120; pixelHeight++){
       take_picture();
-      pixel = get_pixel(pixelWidth, pixelHeight);
-      pixelHeight++;
-      if(pixel){
-        
+      pixel = get_pixel(pixelWidth, pixelHeight, 3);
+        if (pixel>240){
+          pixel = 255
+        }else {
+          pixel = 0
+        }
+        if (pixel = 255){
+          sum = sum + pixelHeight
+          numFound++;
+          if(pixelWidth< minP){ //code to find the rangeof white pixels found
+            minP = pixelWidth;
+          }else if(pixelWidth>maxP){
+            maxP = pixelWidth;
+          }
         }
       }
+      pixelWidth++;
     }
-    pixelWidth++;
   }
-  }
-  
+  if(numFound != 0){
+        locationLine = sum/numFound; // finds middle of white line
+      }else{
+        locationLine = 0;
+      }
+      range = maxP -minP;
+      error = center - locationLine;
+
   return 0;
 }
 
