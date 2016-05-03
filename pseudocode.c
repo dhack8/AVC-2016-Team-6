@@ -11,13 +11,15 @@ int main(){
   int error = 0;
   int numFound = 0;
   int p = 0; //pixel variable
-  int minP = 319;
-  int maxP = 0;
+  int minP;
+  int maxP;
   int lineWidth = 10;//dont actully know what the line width will be but this value should be slightly larger then the line with in pixels
   while(true){//loops forever
     while(hasLine){//loops while robot has line
       sum = 0; //reset sum
       take_picture();
+      minP = 319;
+      maxP = 0;
       for(int i = 0; i<320; i++){ // loop across image
         p = get_pixel(120,i,3); // p equals pixel
         if(p>240){ p = 255; } else { p = 0; } // flattens anything that isnt COMPLETElY white to 0 (black)
@@ -43,13 +45,13 @@ int main(){
         continue;
       }else if(/*front sensor has object*/ && locationLine != 0){ //if we have a ine but theres a wall
         /*code for stopping the robot and opening the gate goes here*/
-      }else if(range>lineWidth && locationLine < 180){ //this is either a T or 4 way junction or a 90 degree left turn (this might catch sharp left turns to)
+      }else if((locationLine<(center-(linewidth/2))) || (locationLine>(center-(linewidth/2)) && locationLine<(center+(linewidth/2)) && range>300)){ //this is either a T or 4 way junction or a 90 degree left turn (this might catch sharp left turns to)
         /*code for turning 90 degrees left*/
-      }else if(range>lineWidth && locationLine >= 180){ //this is a 90 degree right turn
+      }else if(locationLine>(center+(linewidth/2))){ //this is a 90 degree right turn
         /*code for turning 90 degrees right*/
-      }else if(locationLine == 0){ //lost line, no wall and no gate
+      }else if(locationLine == 0 && /*left sensor has nothing*/ && /*front sensor has nothing*/){ //lost line, no wall and no gate
         /*code for turning 180 degrees*/
-      }else if(range<lineWidth){ //just an normal line
+      }else{ //just an normal line
         if(error<-3){ //rightish turn
           /*code that makes the left wheel slightly faster then right depending on magnitude of error*/
         }else if(error>3){ //leftish turn
