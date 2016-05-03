@@ -4,6 +4,7 @@ Just some pseudo code i (david) am putting togethet based on lectures and what i
 //Includes and extern stuff here
 int main(){
   bool hasLine = true;
+  bool inMaze = false;
   int sum = 0;
   int locationLine;
   int center = 160;
@@ -42,6 +43,7 @@ int main(){
       error = center - locationLine;
       if(locationLine == 0 && /*left sensor has wall*/){ //code for entering the fourth quad
         hasLine = false;
+        inMaze = true;
         continue;
       }else if(/*front sensor has object*/ && locationLine != 0){ //if we have a ine but theres a wall
         /*code for stopping the robot and opening the gate goes here*/
@@ -61,6 +63,9 @@ int main(){
         }
       }
     }//none wall maze loop ends
+    while(inMaze){
+      /*maze code goes here*/
+    }
   }
   return 0;
 }
