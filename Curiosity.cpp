@@ -111,7 +111,7 @@ int main(){
    set_motor(2, 50);
   }
 
-  
+  hasLine = true;  
   return 0;
 }
 
