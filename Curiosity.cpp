@@ -52,14 +52,15 @@ int main(){
   int center = 160;
   int pixelWidth = 0;
   int pixelHeight = 0;
+  int numFound = 0;
  
   init(0);
    
   while(hasLine){
   
   for(pixelWidth = 0; pixelWidth < 320; pixelWidth++){
-    int LocationLine = 0;
-    int numFound = 0;
+    int locationLine = 0;
+    
     take_picture();
     pixel = get_pixel(1, pixelWidth, 3);
       if (pixel>240){
@@ -85,6 +86,7 @@ int main(){
   }else{
     locationLine = 0;
   }
+  
   range = maxP -minP;
   error = center - locationLine;
       
