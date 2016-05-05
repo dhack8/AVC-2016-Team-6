@@ -17,7 +17,7 @@
 Everything appears to have been completed, no problems
 
 ###Week 2 Checklist
-- [x] Codders: Play around with code that you think will help, think about the problem in your showers :)
+- [x] Coders: Play around with code that you think will help, think about the problem in your showers :)
 - [x] Hardware: Plan 2nd prototype completetly so its ready to be fabricated first week back.
 
 This weeks task a rather light due to the fact that none of us can get hands on with the hardware, which makes it difficult for both parties to be super porductive.
@@ -32,7 +32,7 @@ To be filled out.
 - [ ] Santhu & Tim: Make robot perform slight left and right turns while still going forwards (use multiplier like we will with the error signal).
 - [ ] Santhu & Tim: Once you get all the turns working show David.
 - [ ] Santhu & Tim: Play around with distance sensors to see how they work.
-- [ ] Tim: make gate open.
+- [x] Tim: make gate open.
 - [ ] Chris & Max: Fabricate 2nd prototype.
 - [ ] Chris & Max: Your workload might be light this week, so once youve done the prototype see where else you can help out.
 - [ ] David: Refine code for first 3 Quadrants.
