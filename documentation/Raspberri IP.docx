@@ -1,1 +1,9 @@
-10.140.78.15
+10.140.78.15 //This is the pi's IP that we use to SSH
+
+//SSH instructions
+1. Power pi and wait for it to fully boot
+2. Open terminal on computer
+3. Type "ssh pi@10.140.78.15"
+4. If prompted with a yes no question type "yes"
+5. When prompted for the pi's password type "pi" (it will not show up that you are typing the characters, but this is for password security)
+6. You are now SSH'd into the pi
