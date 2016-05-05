@@ -42,6 +42,7 @@ extern "C" int receive_from_server(char message[24]);
 
 int main(){
   bool hasLine = true;
+  bool inMaze = false;
   int sum = 0;
   int error = 0;
   int range = 0;
@@ -51,8 +52,9 @@ int main(){
   int center = 160;
   int pixelWidth = 0;
   int pixelHeight = 0;
-
-  
+ 
+  init(0);
+   
   while(hasLine){
   
   int LocationLine = 0;
@@ -80,26 +82,17 @@ int main(){
    }
   
   if(numFound != 0){
-        locationLine = sum/numFound; // finds middle of white line
-      }else{
-        locationLine = 0;
-      }
-      range = maxP -minP;
-      error = center - locationLine;
+    locationLine = sum/numFound; // finds middle of white line
+  }else{
+    locationLine = 0;
+  }
+  range = maxP -minP;
+  error = center - locationLine;
       
-      movement(error, hasLine);
+  bool is_negative = error < 0;
+  bool is_positive = error > 0;
+  
 
-  return 0;
-}
-
-int movement(int error, bool hasLine){
-
-init(0);
-
-bool is_negative = error < 0;
-bool is_positive = error > 0;
-
-while(error != 0){
   if (is_negative){
    set_motor(1, 20);
     set_motor(2, -20);
@@ -113,7 +106,10 @@ while(error != 0){
   }else{
    set_motor(1, 20);
    set_motor(2, 20);
+  }else if(error = 0){
+    hasLine = true
   }
-  hasLine = true;
+  
+  return 0;
 }
-}
+
