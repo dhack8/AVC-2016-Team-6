@@ -57,10 +57,9 @@ int main(){
    
   while(hasLine){
   
-  int LocationLine = 0;
-  int numFound = 0;
-  
   for(pixelWidth = 0; pixelWidth < 320; pixelWidth++){
+    int LocationLine = 0;
+    int numFound = 0;
     take_picture();
     pixel = get_pixel(1, pixelWidth, 3);
       if (pixel>240){
@@ -103,12 +102,13 @@ int main(){
     set_motor(2, 20);
    Sleep(0, 500000);
    error--;
+  }else if(error = 0){
+    hasLine = true;
   }else{
    set_motor(1, 20);
    set_motor(2, 20);
-  }else if(error = 0){
-    hasLine = true
   }
+
   
   return 0;
 }
