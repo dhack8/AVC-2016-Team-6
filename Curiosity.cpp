@@ -51,9 +51,12 @@ int main(){
   int center = 160;
   int pixelWidth = 0;
   int pixelHeight = 0;
-  int LocationLine = 0;
+
   
   while(hasLine){
+  
+  int LocationLine = 0;
+  int numFound = 0;
   
   for(pixelWidth = 0; pixelWidth < 320; pixelWidth++){
     take_picture();
@@ -84,14 +87,17 @@ int main(){
       range = maxP -minP;
       error = center - locationLine;
       
-      movement(error);
+      movement(error, hasLine);
 
   return 0;
 }
 
-int movement(int error){
+int movement(int error, bool hasLine){
 
 init(0);
+
+bool is_negative = error < 0;
+bool is_positive = error > 0;
 
 while(error != 0){
   if (is_negative){
