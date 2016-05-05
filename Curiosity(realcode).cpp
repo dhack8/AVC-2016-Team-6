@@ -52,7 +52,6 @@ int main(){
   int pixelWidth = 0;
   int pixelHeight = 0;
   int LocationLine = 0;
-  int
   
   while(hasLine){
   
