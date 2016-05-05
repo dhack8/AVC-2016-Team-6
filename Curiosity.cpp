@@ -61,14 +61,14 @@ int main(){
   
   for(pixelWidth = 0; pixelWidth < 320; pixelWidth++){
     take_picture();
-    pixel = get_pixel(1, pixelWidth, 3);
+    pixel = get_pixel(pixelWidth, 1, 3);
     
-      if (pixel>240){
+      if (pixel>127){
         pixel = 255;
       }else {
          pixel = 0;
        }
-       if (pixel = 255){
+       if (pixel == 255){
         sum = sum + pixelHeight;
         numFound++;
         if(pixelWidth< minP){ //code to find the rangeof white pixels found
@@ -95,20 +95,20 @@ int main(){
   
 
   if (is_negative){
-   set_motor(1, 20);
-    set_motor(2, -20);
+   set_motor(1, 50);
+    set_motor(2, -50);
     Sleep(0, 500000);
    error++;
   }else if(is_positive){
-   set_motor(1, -20);
-    set_motor(2, 20);
+   set_motor(1, -50);
+    set_motor(2, 50);
    Sleep(0, 500000);
    error--;
   }else if(error = 0){
     hasLine = true;
   }else{
-   set_motor(1, 20);
-   set_motor(2, 20);
+   set_motor(1, 50;
+   set_motor(2, 50);
   }
 
   
