@@ -41,28 +41,6 @@ extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
 
 int main(){
-
-init(0);
-
-take_picture();
-display_picture(1, 0);
-
-set_motor(1, 127.5);
-set_motor(2, -127.5);
-Sleep(0, 500000);
-
-set_motor(1, 0);
-set_motor(2, 0);
-Sleep(1, 0);
-}
-
-
-
-
-
-
-
-int main(){
   bool hasLine = true;
   int sum = 0;
   int error = 0;
@@ -71,19 +49,23 @@ int main(){
   int minP = 319;
   int maxP = 0;
   int center = 160;
+  int pixelWidth = 0;
+  int pixelHeight = 0;
+  int LocationLine = 0;
+  int
   
-  while(true){
+  while(hasLine){
   
   for(pixelWidth = 0; pixelWidth < 320; pixelWidth++){
     take_picture();
     pixel = get_pixel(1, pixelWidth, 3);
       if (pixel>240){
-        pixel = 255
+        pixel = 255;
       }else {
-         pixel = 0
+         pixel = 0;
        }
        if (pixel = 255){
-        sum = sum + pixelHeight
+        sum = sum + pixelHeight;
         numFound++;
         if(pixelWidth< minP){ //code to find the rangeof white pixels found
           minP = pixelWidth;
@@ -92,6 +74,7 @@ int main(){
         }
        }
      }
+     hasLine = false;
    }
   
   if(numFound != 0){
@@ -101,11 +84,31 @@ int main(){
       }
       range = maxP -minP;
       error = center - locationLine;
+      
+      movement(error);
 
   return 0;
 }
 
+int movement(int error){
 
+init(0);
 
-
-
+while(error != 0){
+  if (is_negative){
+   set_motor(1, 20);
+    set_motor(2, -20);
+    Sleep(0, 500000);
+   error++;
+  }else if(is_positive){
+   set_motor(1, -20);
+    set_motor(2, 20);
+   Sleep(0, 500000);
+   error--;
+  }else{
+   set_motor(1, 20);
+   set_motor(2, 20);
+  }
+  hasLine = true;
+}
+}
