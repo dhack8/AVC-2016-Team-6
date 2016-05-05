@@ -57,7 +57,7 @@ int main(){
  
   init(0);
    
-  while(hasLine){
+  while(hasLine){ //The program never makes it back to this loop, even though hasLine becomes true. Should use a method instead or "class member functions" as they are called in C++
   
   for(pixelWidth = 0; pixelWidth < 320; pixelWidth++){
     take_picture();
@@ -111,7 +111,7 @@ int main(){
    set_motor(2, 50);
   }
 
-  hasLine = true;  
+  hasLine = true; //Isn't doing anything useful, loop is never reached again
   return 0;
 }
 
