@@ -26,15 +26,20 @@ This weeks task a rather light due to the fact that none of us can get hands on 
 To be filled out.
 
 ###Week 3 Checklist
-- [ ] Everyone: This is week 3 !, in the plan we said we would finish quads 1 & 2 this week.
+- [x] Everyone: This is week 3 !, in the plan we said we would finish quads 1 & 2 this week.
 - [x] Santhu & Tim: Make robot perform 90 degree turns to the right and left.
 - [x] Santhu & Tim: Make robot perform 180 degree turns to the right and left.
 - [ ] Santhu & Tim: Make robot perform slight left and right turns while still going forwards (use multiplier like we will with the error signal).
-- [ ] Santhu & Tim: Once you get all the turns working show David.
+- [x] Santhu & Tim: Once you get all the turns working show David.
 - [ ] Santhu & Tim: Play around with distance sensors to see how they work.
 - [x] Tim: make gate open.
-- [ ] Chris & Max: Fabricate 2nd prototype.
-- [ ] Chris & Max: Your workload might be light this week, so once youve done the prototype see where else you can help out.
-- [ ] David: Refine code for first 3 Quadrants.
-- [ ] David: Start code for maze.
-- [ ] Everyone: Actually get robot on board for first trial run.
+- [x] Chris & Max: ~~Fabricate 2nd prototype.~~ (Just plan it).
+- [x] Chris & Max: Your workload might be light this week, so once youve done the prototype see where else you can help out.
+- [x] David: Refine code for first 3 Quadrants.
+- [x] David: ~~Start code for maze.~~ ( Reserching PID instead ).
+- [x] Everyone: Actually get robot on board for first trial run.
+
+###Week 3 Review
+
+###Week 4 Checklist
+- [ ] Team metting monday to sort checklist.
