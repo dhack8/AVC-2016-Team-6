@@ -59,7 +59,7 @@ int main(){
     for(i = 0; i < 320; i++){
       pixel = get_pixel(i, 1, 3);
       printf(pixel);
-      if (pixel>127){
+      if (pixel>95){
         sum = sum + i;
         numFound++;
       }
@@ -70,18 +70,14 @@ int main(){
     if(numFound == 0){break;}
     error = center - locationLine;
     P = kP*error;
-    if(P>-6 && P<6){//close to center
-      set_motor(1, 100);
-      set_motor(2, 100);
-      Sleep(0, 500000);
-    }else if(P>0){//left turn
-      set_motor(1, 75+P);
-      set_motor(2, 75);
-      Sleep(0, 500000);
+    }if(P>0){//left turn
+      set_motor(1, 50+ abs(P));
+      set_motor(2, 50);
+      Sleep(0, 50000);
     }else if(P<0){//right turn
-      set_motor(1, 75);
-      set_motor(2, 75+P);
-      Sleep(0, 500000);
+      set_motor(1, 50);
+      set_motor(2, 50+abs(P));
+      Sleep(0, 50000);
     }
   }
   return 0;
