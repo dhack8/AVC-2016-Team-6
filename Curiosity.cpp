@@ -51,13 +51,13 @@ int main(){
   int maxP = 0;
   int center = 160;
   int pixelWidth = 0;
-  int pixelHeight = 0;
   int numFound = 0;
   int locationLine = 0;
+  float Kp = 0.5; // proportinalalty thing
  
   init(0);
    
-  while(hasLine){ //The program never makes it back to this loop, even though hasLine becomes true. Should use a method instead or "class member functions" as they are called in C++
+  while(true){ //The program never makes it back to this loop, even though hasLine becomes true. Should use a method instead or "class member functions" as they are called in C++
   
   for(pixelWidth = 0; pixelWidth < 320; pixelWidth++){
     take_picture();
@@ -69,9 +69,8 @@ int main(){
          pixel = 0;
        }
        if (pixel == 255){
-        sum = sum + pixelHeight;
         numFound++;
-        if(pixelWidth< minP){ //code to find the rangeof white pixels found
+        if(pixelWidth< minP){ //code to find the rangeof white pixels found, used for t junc
           minP = pixelWidth;
         }else if(pixelWidth>maxP){
            maxP = pixelWidth;
@@ -87,8 +86,10 @@ int main(){
     locationLine = 0;
   }
   
-  range = maxP -minP;
+  range = maxP -minP; // For T junc
   error = center - locationLine;
+  
+  porp
       
   bool is_negative = error < 0;
   bool is_positive = error > 0;
@@ -104,14 +105,11 @@ int main(){
     set_motor(2, 50);
    Sleep(0, 500000);
    error--;
-  }else if(error = 0){
-    hasLine = true;
   }else{
    set_motor(1, 50;
    set_motor(2, 50);
   }
 
-  hasLine = true; //Isn't doing anything useful, loop is never reached again
   return 0;
 }
 
