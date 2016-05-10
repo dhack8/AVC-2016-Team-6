@@ -58,6 +58,7 @@ int main(){
     locationLine = 0;
     for(i = 0; i < 320; i++){
       pixel = get_pixel(i, 1, 3);
+      printf(pixel);
       if (pixel>127){
         sum = sum + i;
         numFound++;
@@ -83,4 +84,5 @@ int main(){
       Sleep(0, 500000);
     }
   }
+  return 0;
 }
