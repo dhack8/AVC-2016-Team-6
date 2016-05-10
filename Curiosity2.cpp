@@ -50,7 +50,7 @@ int main(){
   int error = 0;
   int center = 160;
   int P = 0;
-  float kP = 0.5;
+  float kP = 0.94;
   while(true){
     take_picture();
     sum = 0;
@@ -58,7 +58,6 @@ int main(){
     locationLine = 0;
     for(i = 0; i < 320; i++){
       pixel = get_pixel(i, 1, 3);
-      printf(pixel);
       if (pixel>95){
         sum = sum + i;
         numFound++;
@@ -67,16 +66,21 @@ int main(){
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(numFound == 0){break;}
+    if(numFound < 7){
+      set_motor(1, -35);
+      set_motor(2, -35);
+      Sleep(0, 500000);
+      continue;
+    }
     error = center - locationLine;
     P = kP*error;
-    }if(P>0){//left turn
-      set_motor(1, 50+ abs(P));
-      set_motor(2, 50);
+    if(P>0){//left turn
+      set_motor(1, 35));
+      set_motor(2, 35+P);
       Sleep(0, 50000);
     }else if(P<0){//right turn
-      set_motor(1, 50);
-      set_motor(2, 50+abs(P));
+      set_motor(1, 35-P);
+      set_motor(2, 35);
       Sleep(0, 50000);
     }
   }
