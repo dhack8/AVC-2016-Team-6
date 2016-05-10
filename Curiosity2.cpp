@@ -42,23 +42,25 @@ extern "C" int receive_from_server(char message[24]);
 
 int main(){
   init(0);
-  int i = 0;
+  int i = 0; //pixel across image
   int pixel = 0;
-  int sum;
-  int numFound;
-  int locationLine;
-  int error = 0;
-  int center = 160;
-  int P = 0;
-  float kP = 0.94;
-  while(true){
-    take_picture();
+  int sum; //amount of white pixels across
+  int numFound; //amount of white pixels
+  int locationLine; // gets the place in the photo of where the line is
+  int error = 0; //distance from the center of the line
+  int center = 160; // center pixel
+  int P = 0; //proportional
+  float kP = 0.94; //proportionality constant
+  while(true){ //loops forever
+    take_picture(); //takes picture
+    //resets values
     sum = 0;
     numFound = 0;
     locationLine = 0;
-    for(i = 0; i < 320; i++){
+    //
+    for(i = 0; i < 320; i++){ //gets pixels across image
       pixel = get_pixel(i, 1, 3);
-      if (pixel>95){
+      if (pixel>95){//if the pixel is close enough to white
         sum = sum + i;
         numFound++;
       }
@@ -66,7 +68,7 @@ int main(){
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(numFound < 7){
+    if(numFound < 7){//reverses (straight back) untill finds line again
       set_motor(1, -35);
       set_motor(2, -35);
       Sleep(0, 500000);
