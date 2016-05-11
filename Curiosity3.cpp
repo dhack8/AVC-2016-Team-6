@@ -54,6 +54,14 @@ int main(){
   int previousError = 0;
   int D = 0;
   float kD = 0.3;
+  
+  connect_to_server("130.195.6.196", 1024); //Connects to server with the ip address 130.195.6.196, port 1024
+  send_to_server("Please");                 //Asks the connected server for the password (nicely)
+  char pass[24];                            //Define the password variable
+  receive_from_server(pass);                //Receives the password from the connected server
+  send_to_server(pass);                     //Sends the password to the server
+  Sleep(2,0);
+  
   while(true){ //Continuos loop that goes forever
     take_picture(); //grab camera pic
     sum = 0; //reset key values
