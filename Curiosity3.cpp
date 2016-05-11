@@ -51,17 +51,17 @@ int main(){
   int center = 160;
   int P = 0;
   float kP = 0.94;
-  int totalError = 0;
-  int I = 0;
-  float kI = 0.1;
-  while(true){
-    take_picture();
-    sum = 0;
+  int previousError = 0;
+  int D = 0;
+  float kD = 0.3;
+  while(true){ //Continuos loop that goes forever
+    take_picture(); //grab camera pic
+    sum = 0; //reset key values
     numFound = 0;
     locationLine = 0;
-    for(i = 0; i < 320; i++){
+    for(i = 0; i < 320; i++){ //traverse along picture in middle
       pixel = get_pixel(i, 1, 3);
-      if (pixel>95){
+      if (pixel>95){ //flattening finding white pixels
         sum = sum + i;
         numFound++;
       }
@@ -69,25 +69,26 @@ int main(){
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(numFound < 7){
-      set_motor(1, -35);
+    if(numFound < 7){ // if lost line (not enough white pixels for there to be a line)
+      set_motor(1, -35); //reverse
       set_motor(2, -35);
-      Sleep(0, 500000);
-      continue;
+      Sleep(0, 500000); //half a second
+      continue; //restart at top of loop
     }
-    error = center - locationLine;
-    totalError = totalError + error;
-    I = kI*totalError;
-    P = kP*error;
+    error = center - locationLine; //our error signal
+    D = error - previousError; // Difference between this error and the last
+    previousError = error; //setting previous error after operation
+    P = kP*error; //times P by gain
+    D = kD*D; //times D by gain
     if(P>0){//left turn
       set_motor(1, 35));
-      set_motor(2, 35+P+I);
-      Sleep(0, 50000);
+      set_motor(2, 35+P+D); //right motor goes faster
+      Sleep(0, 50000); // 0.05 seconds sleep
     }else if(P<0){//right turn
-      set_motor(1, 35-P-I);
+      set_motor(1, 35-P-D); //left motor goes faster
       set_motor(2, 35);
-      Sleep(0, 50000);
+      Sleep(0, 50000);// 0.05 seconds sleep
     }
   }
-  return 0;
+  return 0; //return nothing
 }
