@@ -50,7 +50,7 @@ int main(){
   int error = 0; //distance from the center of the line
   int center = 160; // center pixel
   int P = 0; //proportional
-  float kP = 0.94; //proportionality constant
+  float kP = 0.9; //proportionality constant
   while(true){ //loops forever
     take_picture(); //takes picture
     //resets values
@@ -60,7 +60,7 @@ int main(){
     //
     for(i = 0; i < 320; i++){ //gets pixels across image
       pixel = get_pixel(i, 1, 3);
-      if (pixel>95){//if the pixel is close enough to white
+      if (pixel>105){//if the pixel is close enough to white
         sum = sum + i;
         numFound++;
       }
@@ -68,7 +68,7 @@ int main(){
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(numFound < 7){//reverses (straight back) untill finds line again
+    if(numFound < 15){//reverses (straight back) untill finds line again
       set_motor(1, -35);
       set_motor(2, -35);
       Sleep(0, 500000);
