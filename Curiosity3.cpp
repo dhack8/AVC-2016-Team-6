@@ -50,7 +50,7 @@ int main(){
   int error = 0;
   int center = 160;
   int P = 0;
-  float kP = 0.94;
+  float kP = 0.9;
   int previousError = 0;
   int D = 0;
   float kD = 0.3;
@@ -61,7 +61,7 @@ int main(){
     locationLine = 0;
     for(i = 0; i < 320; i++){ //traverse along picture in middle
       pixel = get_pixel(i, 1, 3);
-      if (pixel>95){ //flattening finding white pixels
+      if (pixel>105){ //flattening finding white pixels
         sum = sum + i;
         numFound++;
       }
@@ -69,7 +69,7 @@ int main(){
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(numFound < 7){ // if lost line (not enough white pixels for there to be a line)
+    if(numFound < 15){ // if lost line (not enough white pixels for there to be a line)
       set_motor(1, -35); //reverse
       set_motor(2, -35);
       Sleep(0, 500000); //half a second
