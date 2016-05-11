@@ -53,7 +53,7 @@ int main(){
   float kP = 0.9;
   int previousError = 0;
   int D = 0;
-  float kD = 0.3;
+  float kD = 0.5;
   
   connect_to_server("130.195.6.196", 1024); //Connects to server with the ip address 130.195.6.196, port 1024
   send_to_server("Please");                 //Asks the connected server for the password (nicely)
@@ -69,7 +69,7 @@ int main(){
     locationLine = 0;
     for(i = 0; i < 320; i++){ //traverse along picture in middle
       pixel = get_pixel(i, 1, 3);
-      if (pixel>105){ //flattening finding white pixels
+      if (pixel>115){ //flattening finding white pixels
         sum = sum + i;
         numFound++;
       }
@@ -77,7 +77,7 @@ int main(){
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(numFound < 15){ // if lost line (not enough white pixels for there to be a line)
+    if(numFound < 20){ // if lost line (not enough white pixels for there to be a line)
       set_motor(1, -35); //reverse
       set_motor(2, -35);
       Sleep(0, 500000); //half a second
@@ -89,12 +89,12 @@ int main(){
     P = kP*error; //times P by gain
     D = kD*D; //times D by gain
     if(P>0){//left turn
-      set_motor(1, 35));
-      set_motor(2, 35+P+D); //right motor goes faster
+      set_motor(1, 45);
+      set_motor(2, 45+P+D); //right motor goes faster
       Sleep(0, 50000); // 0.05 seconds sleep
     }else if(P<0){//right turn
-      set_motor(1, 35-P-D); //left motor goes faster
-      set_motor(2, 35);
+      set_motor(1, 45-P-D); //left motor goes faster
+      set_motor(2, 45);
       Sleep(0, 50000);// 0.05 seconds sleep
     }
   }
