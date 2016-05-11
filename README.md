@@ -42,10 +42,10 @@ To be filled out.
 ###Week 3 Review
 
 ###Week 4 Checklist
-- [ ] Team metting monday to sort checklist.
+- [x] Team metting monday to sort checklist.
 - [ ] Programmers: PID.
-- [ ] David: Right quick PID programe early in the week.
-- [ ] Everyone: Test and complete quadrant 2.
+- [x] David: Right quick PID programe early in the week.
+- [x] Everyone: Test and complete quadrant 2.
 - [ ] Hardware: Print parts for 2nd proto.
 - [ ] Hardware: Fabricate proto.
 - [ ] As individuals: Progress report.
