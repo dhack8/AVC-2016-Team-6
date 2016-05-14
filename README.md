@@ -51,7 +51,8 @@ Everything has been completed aside from the distance senors and forward turning
 - [ ] Hardware: Fabricate proto.
 - [x] As individuals: Progress report.
 - [x] Everyone: Progress report meeting, make sure everyone is on the same page.
-- 
+
+ 
 ###Week 4 Review
 We have made great progress this week robot gets to the start of quad 3, Hardware guys still havnt produced a final prototype, but this is of little concern for the current prototype is very solid and we are in no rush for the next.
 
