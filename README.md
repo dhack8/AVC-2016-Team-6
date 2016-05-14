@@ -40,12 +40,27 @@ To be filled out.
 - [x] Everyone: Actually get robot on board for first trial run.
 
 ###Week 3 Review
+Everything has been completed aside from the distance senors and forward turning but im sure this will be done next week
 
 ###Week 4 Checklist
 - [x] Team metting monday to sort checklist.
-- [ ] Programmers: PID.
+- [x] Programmers: PID. (Did p and d dont need i)
 - [x] David: Right quick PID programe early in the week.
 - [x] Everyone: Test and complete quadrant 2.
 - [ ] Hardware: Print parts for 2nd proto.
 - [ ] Hardware: Fabricate proto.
-- [ ] As individuals: Progress report.
+- [x] As individuals: Progress report.
+- [x] Everyone: Prgress report meeting, make sure everyone is on the same page.
+- 
+###Week 4 Review
+We have made great progress this week robot gets to the start of quad 3, Hardware guys still havnt produced a final prototype, but this is of little concern for the current prototype is very solid and we are in no rush for the next.
+
+###Week 5 Checklist
+- [ ] Everyone: Hand in progress report on monday.
+- [ ] Programmers: Get through quadrants 1-3.
+- [ ] Programmers: Write code for detecting maze intersections etc.
+- [ ] Programmers: write code for 90 degree turns
+- [ ] Programmers: Work on some conceptual code for quad 4.
+- [ ] Hardware: Final prototpye has been delayed a lot, it needs to be this week.
+- [ ] Hardware: Print out final chassis.
+- [ ] Hardware: Fabricate final prototpye.
