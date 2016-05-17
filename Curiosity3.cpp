@@ -86,7 +86,7 @@ int main(){
     error = center - locationLine; //our error signal
     D = error - previousError; // Difference between this error and the last
     previousError = error; //setting previous error after operation
-    P = kP*error; //times P by gain
+    P = kP*(error)**2; //times P by gain
     D = kD*D; //times D by gain
     if(P>0){//left turn
       set_motor(1, 45);
