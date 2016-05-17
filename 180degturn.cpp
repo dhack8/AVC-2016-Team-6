@@ -42,9 +42,14 @@ extern "C" int receive_from_server(char message[24]);
 
 int main(){
   init(0);
-  set_motor(2, 50);
-  Sleep(5,0);
-  set_motor(2, 0);
+  set_motor(1, 40);
+  set_motor(2, 40);
   Sleep(1,0);
+  set_motor(1, -62);
+  set_motor(2, 62);
+  Sleep(0,500000);
+  set_motor(1, 0);
+  set_motor(2, 0);
+  Sleep(0,50000);
 return 0;
 }
