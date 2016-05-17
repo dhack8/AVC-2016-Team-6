@@ -1,4 +1,4 @@
-10.140.108.242 //This is the pi's IP that we use to SSH
+10.140.122.42 //This is the pi's IP that we use to SSH
 
 //SSH instructions
 1. Power pi and wait for it to fully boot
