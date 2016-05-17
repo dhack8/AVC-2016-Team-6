@@ -50,10 +50,10 @@ int main(){
   int error = 0;
   int center = 160;
   int P = 0;
-  float kP = 0.9;
+  float kP = 0.3;
   int previousError = 0;
   int D = 0;
-  float kD = 0.5;
+  float kD = 0.15;
   
   connect_to_server("130.195.6.196", 1024); //Connects to server with the ip address 130.195.6.196, port 1024
   send_to_server("Please");                 //Asks the connected server for the password (nicely)
@@ -84,9 +84,10 @@ int main(){
       continue; //restart at top of loop
     }
     error = center - locationLine; //our error signal
+    error = (error*(error +1))/2 //making it the sum of all errors up to error
     D = error - previousError; // Difference between this error and the last
     previousError = error; //setting previous error after operation
-    P = kP*(error)**2; //times P by gain
+    P = kP*error; //times P by gain
     D = kD*D; //times D by gain
     if(P>0){//left turn
       set_motor(1, 45);
