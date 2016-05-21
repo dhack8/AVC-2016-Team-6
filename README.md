@@ -57,11 +57,24 @@ Everything has been completed aside from the distance senors and forward turning
 We have made great progress this week robot gets to the start of quad 3, Hardware guys still havnt produced a final prototype, but this is of little concern for the current prototype is very solid and we are in no rush for the next.
 
 ###Week 5 Checklist
-- [ ] Everyone: Hand in progress report on monday.
+- [x] Everyone: Hand in progress report on monday.
 - [ ] Programmers: Get through quadrants 1-3.
 - [ ] Programmers: Write code for detecting maze intersections etc.
-- [ ] Programmers: write code for 90 degree turns
-- [ ] Programmers: Work on some conceptual code for quad 4.
+- [x] Programmers: write code for 90 degree turns
+- [x] Programmers: Work on some conceptual code for quad 4.
 - [ ] Hardware: Final prototpye has been delayed a lot, it needs to be this week.
-- [ ] Hardware: Print out final chassis.
+- [x] Hardware: Print out final chassis.
 - [ ] Hardware: Fabricate final prototpye.
+
+
+###Week 5 Review
+Not the best week, David and Santhu are behind with quadrant 3, final prototype has been printed but not put together yet.
+
+###Week 6 Checklist
+- [ ] Hardware: Fabricate robot on monday. top proority.
+- [ ] Hardware: Once done you will be assigned to Programming team B (Tim Max Chris).
+- [ ] Santhu and David: Assigned to Programming team A (Santhu David).
+- [ ] Programming team B: Working on quadrant 4 code.
+- [ ] Programming team A: Working on finishing quadrant 3 code.
+
+Teams its probaby best that we keep out code in seperate files for the moment, that will make testing the code a whole lot easier, for example team B can just run there code from the start of the maze and not worry about line following. Then we will stitch all the code together. I recommend looking at curiosity 3 as some code in there may help. also elf might give us some helpfull hints on quad 4 this week (but i doubt it) however you should look at his avc wiki.
