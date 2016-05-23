@@ -60,7 +60,7 @@ int main(){
   float kD = 0.3;
   int MOTOR_SPEED = 35;
   int minP;
-  int maxP
+  int maxP;
   int range;
   
   //connect_to_server("130.195.6.196", 1024); //Connects to server with the ip address 130.195.6.196, port 1024
