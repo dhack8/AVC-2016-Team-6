@@ -161,14 +161,16 @@ int main(){
                 rightSpeed = -60; 
                 leftSpeed = 60;
                 Sleep(0,500000);
+                printf(">400 \n");
             }
             if ((adc_readingfrontleft) < 400){
                 rightSpeed = 60; 
                 leftSpeed = -60;
                 Sleep(0,500000);
+                printf("<400 \n");
             }
         //printf("sensor %d: %d\n", i, adc_reading);
-        }
+        printf("got to end \n");
         }
     }
 return 0;}
