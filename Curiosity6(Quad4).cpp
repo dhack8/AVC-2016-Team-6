@@ -178,11 +178,16 @@ int main(){
             leftSpeed = leftSpeed +10;
             set_motor(2, leftSpeed);
             sleep(0,100000);
+            leftSpeed = leftSpeed -10;
+            set_motor(2, leftSpeed);
         }
         else if (adc_readingfrontleft < adc_readingbackleft){
             rightSpeed = rightSpeed +10;
             set_motor(1, rightSpeed);
             sleep(0,100000);
+            rightSpeed = rightSpeed -10;
+            set_motor(1, rightSpeed);
+            
         }
     }
 return 0;}
