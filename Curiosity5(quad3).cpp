@@ -57,7 +57,7 @@ int main(){
   float kP = 0.9;
   int previousError = 0;
   int D = 0;
-  float kD = 0.3;
+  float kD = 0.2;
   int MOTOR_SPEED = 35;
   int minP;
   int maxP;
@@ -104,12 +104,12 @@ int main(){
     if(numFound2 !=0){
       locationLine2 = sum2/numFound2;
     }
-    if(numFound < 20 && numFound2 > 20){
-      set_motor(1, 50);
-      set_motor(2, -50);
-      Sleep(0, 500000);
-    }
-    if(numFound < 20){ // if lost line (not enough white pixels for there to be a line)
+    if(numFound < 20 && numFound2 > 20 && locationLine2 > 75 && locationLine < 245){
+      set_motor(1, 60);
+      set_motor(2, -60);
+      Sleep(1, 500000);
+      continue;
+    }else if(numFound < 20){ // if lost line (not enough white pixels for there to be a line)
       set_motor(1, -35); //reverse
       set_motor(2, -35);
       Sleep(0, 500000); //half a second
