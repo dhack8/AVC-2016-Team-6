@@ -105,8 +105,8 @@ int main(){
       locationLine2 = sum2/numFound2;
     }
     if(numFound < 20 && numFound2 > 20){
-      set_motor(1, 123);
-      set_motor(2, -123);
+      set_motor(1, 50);
+      set_motor(2, -50);
       Sleep(0, 500000);
     }
     if(numFound < 20){ // if lost line (not enough white pixels for there to be a line)
