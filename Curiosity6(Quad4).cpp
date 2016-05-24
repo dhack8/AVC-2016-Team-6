@@ -152,7 +152,7 @@ int main(){
         adc_readingfront = read_analog(0);
         adc_readingfrontleft = read_analog(1);
         adc_readingbackleft = read_analog(2);
-        printf(adc_readingfront);
+        //printf(adc_readingfront);
         if (adc_readingfront > 200){
             Sleep(0,250000);
             if ((adc_readingfrontleft) > 400){
@@ -173,6 +173,16 @@ int main(){
             
         //printf("sensor %d: %d\n", i, adc_reading);
         //printf("got to end \n");
+        }
+        if (adc_readingfrontleft > adc_readingbackleft){
+            leftSpeed = leftSpeed +10;
+            set_motor(2, leftSpeed);
+            sleep(0,100000);
+        }
+        else if (adc_readingfrontleft < adc_readingbackleft){
+            rightSpeed = rightSpeed +10;
+            set_motor(1, rightSpeed);
+            sleep(0,100000);
         }
     }
 return 0;}
