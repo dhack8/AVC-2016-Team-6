@@ -21,8 +21,7 @@ int main(){
     int sensors = 3;
     for(int i = 0; i < sensors; i++){
       adc_reading = read_analog(i);
-      printf("sensor"+i+": %d\n",adc_reading);
+      printf("sensor %d: %d\n", i, adc_reading);
       Sleep(0,500000); 
-    }
     }
 return 0;}
