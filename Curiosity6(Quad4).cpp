@@ -152,7 +152,7 @@ int main(){
         adc_readingfront = read_analog(0);
         adc_readingfrontleft = read_analog(1);
         adc_readingbackleft = read_analog(2);
-          
+        printf(adc_readingfront);
         if (adc_readingfront < 200){
             Sleep(0,250000);
             if ((adc_readingfrontleft) > 400){
