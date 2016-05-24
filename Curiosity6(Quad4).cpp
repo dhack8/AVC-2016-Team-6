@@ -141,8 +141,8 @@ int main(){
     int adc_readingfrontleft;
     int adc_readingbackleft;
     int sensors = 3;
-    int leftintialspeed =25;
-    int rightintialspeed =25;
+    int leftintialspeed =60;
+    int rightintialspeed =60;
     int leftSpeed;
     int rightSpeed;
    
