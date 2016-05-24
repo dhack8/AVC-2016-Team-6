@@ -41,7 +41,7 @@ extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
 
 void turnLeft(int PID, int MOTOR_SPEED);
-void turnRightg(int PID, int MOTOR_SPEED);
+void turnRight(int PID, int MOTOR_SPEED);
 
 int main(){
   init(0);
