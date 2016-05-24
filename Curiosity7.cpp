@@ -54,6 +54,7 @@ int main(){
   int previousError = 0;
   int D = 0;
   float kD = 0.3;
+  int MOTOR_SPEED = 40;
   
   //connect_to_server("130.195.6.196", 1024); //Connects to server with the ip address 130.195.6.196, port 1024
   //send_to_server("Please");                 //Asks the connected server for the password (nicely)
