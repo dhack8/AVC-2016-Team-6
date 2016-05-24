@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-\\these load specific methods from the ENGR101 library
+//these load specific methods from the ENGR101 library
 extern "C" int init(int d_lev);
 extern "C" int read_analog(int ch_adc);
 extern "C" int Sleep(int sec, int usec);
