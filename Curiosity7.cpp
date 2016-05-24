@@ -40,6 +40,9 @@ extern "C" int connect_to_server( char server_addr[15],int port);
 extern "C" int send_to_server(char message[24]);
 extern "C" int receive_from_server(char message[24]);
 
+void turnLeft(int PID, int MOTOR_SPEED);
+void turnRightg(int PID, int MOTOR_SPEED);
+
 int main(){
   init(0);
   int i = 0;
@@ -55,6 +58,8 @@ int main(){
   int D = 0;
   float kD = 0.3;
   int MOTOR_SPEED = 40;
+  bool lostLine = false;
+  int errorSign;
   
   //connect_to_server("130.195.6.196", 1024); //Connects to server with the ip address 130.195.6.196, port 1024
   //send_to_server("Please");                 //Asks the connected server for the password (nicely)
@@ -79,10 +84,18 @@ int main(){
       locationLine = sum/numFound; // finds middle of white line
     }
     if(numFound < 20){ // if lost line (not enough white pixels for there to be a line)
-      set_motor(1, -35); //reverse
-      set_motor(2, -35);
-      Sleep(0, 500000); //half a second
-      continue; //restart at top of loop
+      lostLine = true;
+      errorSign = previousError;
+    }else{
+      lostLine = false;
+    }
+    if(lostLine){
+      if(errorSign>0){//left turn
+        turnLeft(50, 0);
+      }else if(errorSign<0){//right turn
+        turnRight(-50, 0);
+      }
+      continue;
     }
     error = center - locationLine; //our error signal
     //error = (error*(error +1))/2 //making it the sum of all errors up to error
