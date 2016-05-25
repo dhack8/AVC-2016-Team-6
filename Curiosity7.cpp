@@ -42,6 +42,7 @@ extern "C" int receive_from_server(char message[24]);
 
 void turnLeft(int PID, int MOTOR_SPEED);
 void turnRight(int PID, int MOTOR_SPEED);
+void lostLine(int errorSign);
 
 int main(){
   init(0);
@@ -80,33 +81,31 @@ int main(){
         numFound++;
       }
     }
+    
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(sum > 50000){
-      turnLeft(45, 0);
-      sleep(1,0);
+    
+    if(sum > 12880){
+      printf("found an intersection \n");
     }
+    
     if(numFound < 18){ // if lost line (not enough white pixels for there to be a line)
-      lostLine = true;
       errorSign = previousError;
-    }else{
-      lostLine = false;
-    }
-    if(lostLine){
-      if(errorSign>0){//left turn
-        turnLeft(45, 0);
-      }else if(errorSign<0){//right turn
-        turnRight(-45, 0);
-      }
+      lostLine(errorSign);
       continue;
     }
+    
     error = center - locationLine; //our error signal
-    //error = (error*(error +1))/2 //making it the sum of all errors up to error
+    
     D = error - previousError; // Difference between this error and the last
+    
     previousError = error; //setting previous error after operation
+    
     P = kP*error; //times P by gain
+    
     D = kD*D; //times D by gain
+    
     if(P>0){//left turn
       turnLeft((P + D), MOTOR_SPEED);
     }else if(P<0){//right turn
@@ -121,8 +120,17 @@ void turnLeft(int PID, int MOTOR_SPEED){
   set_motor(2, MOTOR_SPEED+PID); //right motor goes faster
   Sleep(0, 50000); // 0.05 seconds sleep
 }
+
 void turnRight(int PID, int MOTOR_SPEED){
   set_motor(1, MOTOR_SPEED-PID); //left motor goes faster
   set_motor(2, MOTOR_SPEED);
   Sleep(0, 50000);// 0.05 seconds sleep
+}
+
+void lostLine(int errorSign){
+  if(errorSign>0){//left turn
+    turnLeft(45, 0);
+  }else if(errorSign<0){//right turn
+    turnRight(-45, 0);
+  }
 }
