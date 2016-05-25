@@ -140,42 +140,63 @@ int main(){
     int adc_readingfront;
     int adc_readingfrontleft;
     int adc_readingbackleft;
-    int sensors = 3;
+    int adc_readingrightside; //not on the robot yet
+   
     int leftintialspeed =60;
     int rightintialspeed =60;
     int leftSpeed;
     int rightSpeed;
    
     while(true){
-        leftSpeed = 0;
-        rightSpeed = 0;
-        set_motor(1, leftintialspeed); 
+        leftSpeed = 0; //resets the leftSpeed each loop
+        rightSpeed = 0; //resets the rightSpeed each loop
+        set_motor(1, leftintialspeed); //sets the speed at 60 going in the current direction 
         set_motor(2, rightintialspeed);
+        // takes the 3 (soon to be 4) readings which will be runned thorugh the if statements.
         adc_readingfront = read_analog(0);
         adc_readingfrontleft = read_analog(1);
         adc_readingbackleft = read_analog(2);
         //printf(adc_readingfront);
-        if (adc_readingfront > 200){
+        
+        //code for a 180 degree turn//
+        //has to be at start as it has to happen before anything else if it is true
+        if (adc_readingfrontleft >400 && adc_readingfront >400 && adc_readingrightside >400) {
+            //adc_readingrightside isn't on the robot 
+            
+            //not sure if correct took from the github pages (under 180 turn)
+            //set_motor(1, 40);
+            //set_motor(2, 40);
+            //Sleep(1,0);
+            //set_motor(1, -62);
+            //set_motor(2, 62);
+            //Sleep(0,500000);
+            //set_motor(1, 0);
+            //set_motor(2, 0);
+            //Sleep(0,50000);
+        }
+        //code for making the 90 degree turns 
+        if (adc_readingfront > 200){ 
             Sleep(0,250000);
-            if ((adc_readingfrontleft) > 400){
+            if ((adc_readingfrontleft) > 400){   //has a wall on the left so will turn right
                 rightSpeed = -60; 
                 leftSpeed = 60;
-               
-                //printf(">400 \n");
             }
-            if ((adc_readingfrontleft) < 400){
+            if ((adc_readingfrontleft) < 400){    //has no wall on the left so will turn left
                 rightSpeed = 60; 
                 leftSpeed = -60;
-                
-                //printf("<400 \n");
             }
-            set_motor(1, rightSpeed); //reverse
+            //moves the robot for .5secs to do the 90degree turn
+            set_motor(1, rightSpeed); 
             set_motor(2, leftSpeed);
             Sleep(0,500000);
-            
-        //printf("sensor %d: %d\n", i, adc_reading);
-        //printf("got to end \n");
+            //sets it back to the original speed after the turn 
+            set_motor(1, rightintialspeed); 
+            set_motor(2, leftintialspeed);
+   
         }
+        //error correcting code
+        // if both sensors aren't parallel to the wall make them
+        //this means the robot will be going straight
         if (adc_readingfrontleft > adc_readingbackleft){
             leftSpeed = 10;
             set_motor(2, leftintialspeed+leftSpeed);
@@ -186,8 +207,23 @@ int main(){
             rightSpeed = 10;
             set_motor(1, rightintialspeed+rightSpeed);
             sleep(0,100000);
-            
-            
-        }
+        
+        }    
+        //need to add code to make sure that they dont get too close to either of the walls
+        //if (adc_readingfrontleft>really close to the wall){
+            //leftSpeed = 5;
+            //rightSpeed = -5;
+            //set_motor(1, leftintialspeed+rightSpeed);
+            //set_motor(2, leftintialspeed+leftSpeed);
+            //sleep(0,100000);
+        //}
+        //if (adc_readingbackleft>really close to the wall){
+            //leftSpeed = -5;
+            //rightSpeed = 5;
+            //set_motor(1, leftintialspeed+rightSpeed);
+            //set_motor(2, leftintialspeed+leftSpeed);
+            //sleep(0,100000);
+        //}
+        
     }
 return 0;}
