@@ -142,9 +142,11 @@ void lostLine(int errorSign){
 }
 
 void detectIntercestion(int pixelN, int pixelE, int pixelS, int pixelW){
-  if(pixelN < 115){
-    if((pixelE > 115 && pixelS > 115 && pixelW > 115) || (pixelW > 115 && pixelS > 115 && pixelE < 115)){
-      
+  if(pixelN < 115){ // if north isnt open
+    if((pixelE > 115 && pixelS > 115 && pixelW > 115) || (pixelW > 115 && pixelS > 115 && pixelE < 115)){ // T junction
+      printf("T junction");
+    }else if(pixelE > 115 && pixelS > 115 && pixelW < 115){ //right turn
+      printf("Right turn");
     }
   }
 }
