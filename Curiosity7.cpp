@@ -43,7 +43,7 @@ extern "C" int receive_from_server(char message[24]);
 void turnLeft(int PID, int MOTOR_SPEED);
 void turnRight(int PID, int MOTOR_SPEED);
 void lostLine(int errorSign);
-void detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW);
+bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW);
 
 int main(){
   init(0);
@@ -75,10 +75,10 @@ int main(){
   
   while(true){ //Continuos loop that goes forever
     take_picture(); //grab camera pic
-    pixelN = get_pixel(160, 20, 3);
-    pixelE = get_pixel(300, 120, 3);
+    pixelN = get_pixel(160, 0, 3);
+    pixelE = get_pixel(319, 120, 3);
     pixelS = get_pixel(160, 120, 3);
-    pixelW = get_pixel(20, 120, 3);
+    pixelW = get_pixel(0, 120, 3);
     sum = 0; //reset key values
     numFound = 0;
     locationLine = 0;
@@ -94,7 +94,9 @@ int main(){
       locationLine = sum/numFound; // finds middle of white line
     }
     
-    detectIntersection(pixelN, pixelE, pixelS, pixelW);
+    if(detectIntersection(pixelN, pixelE, pixelS, pixelW)){
+      continue;
+    }
     
     if(numFound < 18){ // if lost line (not enough white pixels for there to be a line)
       errorSign = previousError;
@@ -141,14 +143,20 @@ void lostLine(int errorSign){
   }
 }
 
-void detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW){
+bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW){
   if(pixelN < 115){ // if north isnt open
     if((pixelE > 115 && pixelS > 115 && pixelW > 115) || (pixelW > 115 && pixelS > 115 && pixelE < 115)){ // T junction
       printf("T junction");
-      turnLeft(40, 0);
+      set_motor(1, 0);
+      set_motor(2, 150);
+      Sleep(0, 500000);
+      return true;
     }else if(pixelE > 115 && pixelS > 115 && pixelW < 115){ //right turn
       printf("Right turn");
-      turnRight(-40, 0);
-    }
-  }
+      set_motor(1, 150);
+      set_motor(2, 0);
+      Sleep(0, 500000);
+      return true;
+    }else{ return false;}
+  }else{ return false;}
 }
