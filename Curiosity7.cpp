@@ -56,7 +56,7 @@ int main(){
   float kP = 0.9;
   int previousError = 0;
   int D = 0;
-  float kD = 0.3;
+  float kD = 0;
   int MOTOR_SPEED = 40;
   bool lostLine = false;
   int errorSign;
@@ -83,7 +83,11 @@ int main(){
     if(numFound != 0){
       locationLine = sum/numFound; // finds middle of white line
     }
-    if(numFound < 20){ // if lost line (not enough white pixels for there to be a line)
+    if(sum > 50000){
+      turnLeft(45, 0);
+      sleep(1,0);
+    }
+    if(numFound < 18){ // if lost line (not enough white pixels for there to be a line)
       lostLine = true;
       errorSign = previousError;
     }else{
@@ -91,9 +95,9 @@ int main(){
     }
     if(lostLine){
       if(errorSign>0){//left turn
-        turnLeft(50, 0);
+        turnLeft(45, 0);
       }else if(errorSign<0){//right turn
-        turnRight(-50, 0);
+        turnRight(-45, 0);
       }
       continue;
     }
