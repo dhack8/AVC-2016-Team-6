@@ -147,6 +147,8 @@ int main(){
     int rightSpeed;
    
     while(true){
+        leftSpeed = 0;
+        rightSpeed = 0;
         set_motor(1, leftintialspeed); 
         set_motor(2, rightintialspeed);
         adc_readingfront = read_analog(0);
@@ -175,18 +177,16 @@ int main(){
         //printf("got to end \n");
         }
         if (adc_readingfrontleft > adc_readingbackleft){
-            leftSpeed = leftSpeed +10;
-            set_motor(2, leftSpeed);
+            leftSpeed = 10;
+            set_motor(2, leftintialspeed+leftSpeed);
             sleep(0,100000);
-            leftSpeed = leftSpeed -10;
-            set_motor(2, leftSpeed);
+            
         }
         else if (adc_readingfrontleft < adc_readingbackleft){
-            rightSpeed = rightSpeed +10;
-            set_motor(1, rightSpeed);
+            rightSpeed = 10;
+            set_motor(1, rightintialspeed+rightSpeed);
             sleep(0,100000);
-            rightSpeed = rightSpeed -10;
-            set_motor(1, rightSpeed);
+            
             
         }
     }
