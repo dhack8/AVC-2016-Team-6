@@ -149,13 +149,25 @@ bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW){
       printf("T junction");
       set_motor(1, 0);
       set_motor(2, 150);
-      Sleep(0, 500000);
+      Sleep(0, 50000);
       return true;
     }else if(pixelE > 115 && pixelS > 115 && pixelW < 115){ //right turn
       printf("Right turn");
       set_motor(1, 150);
       set_motor(2, 0);
-      Sleep(0, 500000);
+      Sleep(0, 50000);
+      return true;
+    }else if(pixleN < 115 && pixelE < 115 && pixelW < 155 && pixelS > 155){
+      printf("Dead end");
+      set_motor(1, 150);
+      set_motor(2, 150);
+      Sleep(1,0);
+      return true;
+    }else if(pixelN > 115 && pixelE > 115 && pixelW < 115 && pixelS > 115){
+      printf("side ways T");
+      set_motor(1, 0);
+      set_motor(2, 150);
+      Sleep(0, 50000);
       return true;
     }else{ return false;}
   }else{ return false;}
