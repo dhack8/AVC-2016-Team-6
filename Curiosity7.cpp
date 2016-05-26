@@ -43,7 +43,7 @@ extern "C" int receive_from_server(char message[24]);
 void turnLeft(int PID, int MOTOR_SPEED);
 void turnRight(int PID, int MOTOR_SPEED);
 void lostLine(int errorSign);
-bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW);
+bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW, int THRESHOLD);
 
 int main(){
   init(0);
@@ -63,7 +63,7 @@ int main(){
   int previousError = 0;
   int D = 0;
   float kD = 0;
-  int MOTOR_SPEED = 30;
+  int MOTOR_SPEED = 40;
   int THRESHOLD = 115;
   int errorSign;
   
@@ -95,7 +95,7 @@ int main(){
       locationLine = sum/numFound; // finds middle of white line
     }
     
-    if(detectIntersection(pixelN, pixelE, pixelS, pixelW)){
+    if(detectIntersection(pixelN, pixelE, pixelS, pixelW, THRESHOLD)){
       continue;
     }
     
@@ -144,16 +144,16 @@ void lostLine(int errorSign){
   }
 }
 
-bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW){
+bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW, THRESHOLD){
   if(pixelN < THRESHOLD){ // if north isnt open
     if( (pixelW > THRESHOLD && pixelS > THRESHOLD && pixelE > THRESHOLD) || (pixelW > THRESHOLD && pixelS > THRESHOLD && pixelE < THRESHOLD)){ // T junction
-      printf("T junction");
+      printf("T junction \n");
       set_motor(1, 0);
       set_motor(2, 150);
       Sleep(0, 500000);
       return true;
     }else if(pixelE > THRESHOLD && pixelS > THRESHOLD && pixelW < THRESHOLD){ //right turn
-      printf("Right turn");
+      printf("Right turn \n");
       set_motor(1, 150);
       set_motor(2, 0);
       Sleep(0, 500000);
