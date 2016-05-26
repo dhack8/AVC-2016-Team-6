@@ -114,7 +114,7 @@ int main(){
       }//for loop closes here
       //now we have the number of white pixels in the left and right vertical lines
       if(numFoundLeft > NUM_FOUND_THRESH){ //either a T juntion or a left turn either way we want to turn left
-        printf("T junction \n");
+        printf("T junction/left turn \n");
         set_motor(1, 0);
         set_motor(2, 150);
         Sleep(0, 500000);
