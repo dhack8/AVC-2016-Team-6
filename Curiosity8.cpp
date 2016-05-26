@@ -123,7 +123,7 @@ int main(){
         set_motor(1, 150);
         set_motor(2, 0);
         Sleep(0, 500000);
-      }else //if horizontal line has nothing and both the vertical lines have nothing must of lost the line on a hard turn (quad 1 or 2)
+      }else{ //if horizontal line has nothing and both the vertical lines have nothing must of lost the line on a hard turn (quad 1 or 2)
         lostLine(previousError); //code for finding line again, function is located below
       }//for array ends here
       continue; //continue to get the system to rescan rather then continueing to line following code
@@ -151,7 +151,7 @@ int main(){
   
   //this is where quad 4 code will go
   
-  return 0; //return nothing
+return 0;//return nothing
 }
 
 void turnLeft(int PID, int MOTOR_SPEED){// left turn code takes PID and motorspeed
