@@ -114,10 +114,15 @@ int main(){
       }//for loop closes here
       //now we have the number of white pixels in the left and right vertical lines
       if(numFoundLeft > NUM_FOUND_THRESH){ //either a T juntion or a left turn either way we want to turn left
-        //enough white pixels to the left that we know the tape goes this way
-        //90 degree turn left here
+        printf("T junction \n");
+        set_motor(1, 0);
+        set_motor(2, 150);
+        Sleep(0, 500000);
       }else if(numFoundRight > NUM_FOUND_THRESH){ //a right turn, dont need to check left side bc if the left had tape we would have turned already
-        //90 degree turn right here
+        printf("Right turn \n");
+        set_motor(1, 150);
+        set_motor(2, 0);
+        Sleep(0, 500000);
       }else //if horizontal line has nothing and both the vertical lines have nothing must of lost the line on a hard turn (quad 1 or 2)
         lostLine(previousError); //code for finding line again, function is located below
       }//for array ends here
