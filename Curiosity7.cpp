@@ -59,11 +59,12 @@ int main(){
   int error = 0;
   int center = 160;
   int P = 0;
-  float kP = 0.9;
+  float kP = 0.7;
   int previousError = 0;
   int D = 0;
   float kD = 0;
-  int MOTOR_SPEED = 40;
+  int MOTOR_SPEED = 30;
+  int THRESHOLD = 115;
   int errorSign;
   
   //connect_to_server("130.195.6.196", 1024); //Connects to server with the ip address 130.195.6.196, port 1024
@@ -75,16 +76,16 @@ int main(){
   
   while(true){ //Continuos loop that goes forever
     take_picture(); //grab camera pic
-    pixelN = get_pixel(160, 0, 3);
-    pixelE = get_pixel(319, 120, 3);
-    pixelS = get_pixel(160, 120, 3);
-    pixelW = get_pixel(0, 120, 3);
+    pixelN = get_pixel(160, 80, 3);
+    pixelE = get_pixel(260, 130, 3);
+    pixelS = get_pixel(160, 130, 3);
+    pixelW = get_pixel(60, 130, 3);
     sum = 0; //reset key values
     numFound = 0;
     locationLine = 0;
     for(i = 0; i < 320; i++){ //traverse along picture in middle
-      pixel = get_pixel(i, 1, 3);
-      if (pixel>115){ //flattening finding white pixels
+      pixel = get_pixel(i, 120, 3);
+      if (pixel>THRESHOLD){ //flattening finding white pixels
         sum = sum + i;
         numFound++;
       }
@@ -126,13 +127,13 @@ int main(){
 void turnLeft(int PID, int MOTOR_SPEED){
   set_motor(1, MOTOR_SPEED);
   set_motor(2, MOTOR_SPEED+PID); //right motor goes faster
-  Sleep(0, 50000); // 0.05 seconds sleep
+  Sleep(0, 5000); // 0.05 seconds sleep
 }
 
 void turnRight(int PID, int MOTOR_SPEED){
   set_motor(1, MOTOR_SPEED-PID); //left motor goes faster
   set_motor(2, MOTOR_SPEED);
-  Sleep(0, 50000);// 0.05 seconds sleep
+  Sleep(0, 5000);// 0.05 seconds sleep
 }
 
 void lostLine(int errorSign){
@@ -144,18 +145,18 @@ void lostLine(int errorSign){
 }
 
 bool detectIntersection(int pixelN, int pixelE, int pixelS, int pixelW){
-  if(pixelN < 115){ // if north isnt open
-    if((pixelE > 115 && pixelS > 115 && pixelW > 115) || (pixelW > 115 && pixelS > 115 && pixelE < 115)){ // T junction
+  if(pixelN < THRESHOLD){ // if north isnt open
+    if( (pixelW > THRESHOLD && pixelS > THRESHOLD && pixelE > THRESHOLD) || (pixelW > THRESHOLD && pixelS > THRESHOLD && pixelE < THRESHOLD)){ // T junction
       printf("T junction");
       set_motor(1, 0);
       set_motor(2, 150);
-      Sleep(0, 50000);
+      Sleep(0, 500000);
       return true;
-    }else if(pixelE > 115 && pixelS > 115 && pixelW < 115){ //right turn
+    }else if(pixelE > THRESHOLD && pixelS > THRESHOLD && pixelW < THRESHOLD){ //right turn
       printf("Right turn");
       set_motor(1, 150);
       set_motor(2, 0);
-      Sleep(0, 50000);
+      Sleep(0, 500000);
       return true;
     }else{ return false;}
   }else{ return false;}
