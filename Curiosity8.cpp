@@ -65,8 +65,11 @@ int main(){
   int D = 0; //dirivitave controll currently not being used
   float kD = 0; //dirivitave gain currently 0 not being used
   int MOTOR_SPEED = 40; //base motor speed that both mators are at least running at
-  int THRESHOLD = 115; //anything below 115 is a black pixel anything above can be considered white
-  int NUM_FOUND_THRESH = 18; //constant to decide when there are two few pixels to constitute for the tape
+  int THRESHOLD = 120; //anything below 115 is a black pixel anything above can be considered white
+  int NUM_FOUND_THRESH = 30; //constant to decide when there are two few pixels to constitute for the tape
+  bool quad3 = false; //Bool for detecting if in quad 3 or not
+  int redPixel;
+  int redPixel2;
   
   //network code commented out for easy testing
   
@@ -79,6 +82,14 @@ int main(){
   
   while(true){ //Continuos loop that goes forever
     take_picture(); //get picture from what the camera is currently viewing
+    redPixel = get_pixel(140, 40, 0);
+    redPixel2 = get_pixel(180, 40, 0);
+    
+    if(redPixel > 200 && redPixel2 > 200){
+      printf("---/ QUAD4 FOUND \---");
+      break;
+    }
+    
     sum = 0; //seting certain values to 0 that need to be reset each run through else they would stack
     numFound = 0;
     locationLine = 0;
@@ -94,6 +105,13 @@ int main(){
       locationLine = sum/numFound; //finds the mean location of pixels that were white, can be effected by outlyers
     }//if closes here
     
+    if(numFound>300){ //code to detect when quad 3 is reached
+      quad3 = true;
+      THRESHOLD = 110;
+      kP = 0.5;
+      printf("----/ QUAD3 CODE ACTIVATED  \----");
+    }
+    
     //this is code for if the horizontal line has lost the tape ie numfound < a-threshold-value
     //basically damage control for when following line
     //but first looks if it lost the line due to an intersection
@@ -102,27 +120,35 @@ int main(){
     if(numFound < NUM_FOUND_THRESH){ //if lost line (not enough white pixels for there to be a line)
       numFoundLeft = 0; //reseting some values used to find white pixels in vertical lines
       numFoundRight = 0; //left and right
-      for(o = 0; o < 240; o++){ //traverse along picture from camera downwards
-      pixelLeft = get_pixel(40, o, 3); //geting the pixel 40 from the left and oth down and white value (3)
-      pixelRight = get_pixel(280, o, 3); //getting the pixel 280 from the left and oth down and the white value (3)
-        if(pixelLeft>THRESHOLD){ //if pixel is above a certain value it counts as white for left line
-          numFoundLeft++; //increace left line numfound
-        }//if closes here
-        if(pixelRight>THRESHOLD){ //if pixel is above a certain value it counts as white for right line
-          numFoundRight++; //increace right line numfound
-        }//if closes here
-      }//for loop closes here
+      if(quad3){
+        for(o = 0; o < 240; o++){ //traverse along picture from camera downwards
+        pixelLeft = get_pixel(40, o, 3); //geting the pixel 40 from the left and oth down and white value (3)
+        pixelRight = get_pixel(280, o, 3); //getting the pixel 280 from the left and oth down and the white value (3)
+          if(pixelLeft>THRESHOLD){ //if pixel is above a certain value it counts as white for left line
+            numFoundLeft++; //increace left line numfound
+          }//if closes here
+          if(pixelRight>THRESHOLD){ //if pixel is above a certain value it counts as white for right line
+            numFoundRight++; //increace right line numfound
+          }//if closes here
+        }//for loop closes here
+      }
       //now we have the number of white pixels in the left and right vertical lines
-      if(numFoundLeft > NUM_FOUND_THRESH){ //either a T juntion or a left turn either way we want to turn left
+      if(numFoundLeft > 90){ //either a T juntion or a left turn either way we want to turn left
         printf("T junction/left turn \n");
+        set_motor(1, 40);
+        set_motor(2, 40);
+        Sleep(0, 50000);
         set_motor(1, 0);
-        set_motor(2, 150);
+        set_motor(2, 120);
         Sleep(0, 500000);
-      }else if(numFoundRight > NUM_FOUND_THRESH){ //a right turn, dont need to check left side bc if the left had tape we would have turned already
+      }else if(numFoundRight > 90){ //a right turn, dont need to check left side bc if the left had tape we would have turned already
         printf("Right turn \n");
-        set_motor(1, 150);
+        set_motor(1, 40);
+        set_motor(2, 40);
+        Sleep(0, 50000);
+        set_motor(1, 140);
         set_motor(2, 0);
-        Sleep(0, 500000);
+        Sleep(0, 650000);
       }else{ //if horizontal line has nothing and both the vertical lines have nothing must of lost the line on a hard turn (quad 1 or 2)
         lostLine(previousError); //code for finding line again, function is located below
       }//for array ends here
@@ -168,9 +194,9 @@ void turnRight(int PID, int MOTOR_SPEED){// right turn code takes PID and motors
 
 void lostLine(int errorSign){ //function for when the middle line looses the tape but its not an intersection
   if(errorSign>0){//left turn
-    turnLeft(45, 0); //turn left 45, motorspeed 0 so the bot pivots to the left
+    turnLeft(55, 0); //turn left 45, motorspeed 0 so the bot pivots to the left
   }else if(errorSign<0){//right turn
-    turnRight(-45, 0); //turn right 45, motorspeed 0 so the bot pivots to the right
+    turnRight(-55, 0); //turn right 45, motorspeed 0 so the bot pivots to the right
   }
 }//end of lostLine
 
