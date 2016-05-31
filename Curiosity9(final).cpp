@@ -72,6 +72,7 @@ int main(){
   int adc_readingbackleft;
   int adc_readingfront;
   int adc_readingrightside; //not on the robot yet
+  int close = 420;
    
   int leftintialspeed =60;
   int rightintialspeed =60;
@@ -248,21 +249,20 @@ int main(){
             sleep(0,100000);
         
         }    
-        //need to add code to make sure that they dont get too close to either of the walls
-        //if (adc_readingfrontleft>really close to the wall){
-            //leftSpeed = 5;
-            //rightSpeed = -5;
-            //set_motor(1, leftintialspeed+rightSpeed);
-            //set_motor(2, leftintialspeed+leftSpeed);
-            //sleep(0,100000);
-        //}
-        //if (adc_readingbackleft>really close to the wall){
-            //leftSpeed = -5;
-            //rightSpeed = 5;
-            //set_motor(1, leftintialspeed+rightSpeed);
-            //set_motor(2, leftintialspeed+leftSpeed);
-            //sleep(0,100000);
-        //}
+        if (adc_readingfrontleft>close){
+            leftSpeed = 5;
+            rightSpeed = -5;
+            set_motor(1, leftintialspeed+rightSpeed);
+            set_motor(2, leftintialspeed+leftSpeed);
+            sleep(0,150000);
+        }
+        if (adc_readingbackleft>close){
+            leftSpeed = -5;
+            rightSpeed = 5;
+            set_motor(1, leftintialspeed+rightSpeed);
+            set_motor(2, leftintialspeed+leftSpeed);
+            sleep(0,100000);
+        }
         
     }
   
