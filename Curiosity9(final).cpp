@@ -134,7 +134,6 @@ int main(){
         for(o = 0; o < 240; o++){ //traverse along picture from camera downwards
         pixelLeft = get_pixel(60, o, 3); //geting the pixel 40 from the left and oth down and white value (3)
         pixelRight = get_pixel(260, o, 3); //getting the pixel 280 from the left and oth down and the white value (3)
-        2.089*10^12
           if(pixelLeft>THRESHOLD){ //if pixel is above a certain value it counts as white for left line
             numFoundLeft++; //increace left line numfound
           }//if closes here
