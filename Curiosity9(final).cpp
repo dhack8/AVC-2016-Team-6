@@ -116,7 +116,7 @@ int main(){
     if(quad3){
       adc_readingfrontleft = read_analog(1);
       adc_readbackleft = read_analog(2);
-        if((adc_readingfrontleft >400) && (adc_readingbackleft > 400)){
+        if((adc_readingfrontleft >400) && (adc_readbackleft > 400)){
           printf("----/ QUAD4 CODE ACTIVATED  \----");
           break;
         }
