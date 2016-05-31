@@ -240,13 +240,13 @@ int main(){
         if (adc_readingfrontleft > adc_readingbackleft){
             leftSpeed = 10;
             set_motor(2, leftintialspeed+leftSpeed);
-            sleep(0,100000);
+            Sleep(0,100000);
             
         }
         else if (adc_readingfrontleft < adc_readingbackleft){
             rightSpeed = 10;
             set_motor(1, rightintialspeed+rightSpeed);
-            sleep(0,100000);
+            Sleep(0,100000);
         
         }    
         if (adc_readingfrontleft>close){
@@ -254,14 +254,14 @@ int main(){
             rightSpeed = -5;
             set_motor(1, leftintialspeed+rightSpeed);
             set_motor(2, leftintialspeed+leftSpeed);
-            sleep(0,150000);
+            Sleep(0,150000);
         }
         if (adc_readingbackleft>close){
             leftSpeed = -5;
             rightSpeed = 5;
             set_motor(1, leftintialspeed+rightSpeed);
             set_motor(2, leftintialspeed+leftSpeed);
-            sleep(0,100000);
+            Sleep(0,100000);
         }
         
     }
