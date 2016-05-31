@@ -68,8 +68,8 @@ int main(){
   int THRESHOLD = 120; //anything below 115 is a black pixel anything above can be considered white
   int NUM_FOUND_THRESH = 30; //constant to decide when there are two few pixels to constitute for the tape
   bool quad3 = false; //Bool for detecting if in quad 3 or not
-  int redPixel;
-  int redPixel2;
+  int adc_readingfrontleft;
+  int adc_readingbackleft;
   
   //network code commented out for easy testing
   
@@ -82,13 +82,6 @@ int main(){
   
   while(true){ //Continuos loop that goes forever
     take_picture(); //get picture from what the camera is currently viewing
-    redPixel = get_pixel(140, 40, 0);
-    redPixel2 = get_pixel(180, 40, 0);
-    
-    if(redPixel > 200 && redPixel2 > 200){
-      printf("---/ QUAD4 FOUND \---");
-      break;
-    }
     
     sum = 0; //seting certain values to 0 that need to be reset each run through else they would stack
     numFound = 0;
@@ -107,9 +100,18 @@ int main(){
     
     if(numFound>300){ //code to detect when quad 3 is reached
       quad3 = true;
+      MOTOR_SPEED = 30;
       THRESHOLD = 110;
       kP = 0.5;
       printf("----/ QUAD3 CODE ACTIVATED  \----");
+    }
+    if(quad3){
+      adc_readingfrontleft = read_analog(1);
+      adc_readbackleft = read_analog(2);
+        if((adc_readingfrontleft >400) && (adc_readingbackleft > 400)){
+          printf("----/ QUAD4 CODE ACTIVATED  \----");
+          break;
+        }
     }
     
     //this is code for if the horizontal line has lost the tape ie numfound < a-threshold-value
@@ -122,8 +124,9 @@ int main(){
       numFoundRight = 0; //left and right
       if(quad3){
         for(o = 0; o < 240; o++){ //traverse along picture from camera downwards
-        pixelLeft = get_pixel(40, o, 3); //geting the pixel 40 from the left and oth down and white value (3)
-        pixelRight = get_pixel(280, o, 3); //getting the pixel 280 from the left and oth down and the white value (3)
+        pixelLeft = get_pixel(60, o, 3); //geting the pixel 40 from the left and oth down and white value (3)
+        pixelRight = get_pixel(260, o, 3); //getting the pixel 280 from the left and oth down and the white value (3)
+        2.089*10^12
           if(pixelLeft>THRESHOLD){ //if pixel is above a certain value it counts as white for left line
             numFoundLeft++; //increace left line numfound
           }//if closes here
