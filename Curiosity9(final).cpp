@@ -70,6 +70,13 @@ int main(){
   bool quad3 = false; //Bool for detecting if in quad 3 or not
   int adc_readingfrontleft;
   int adc_readingbackleft;
+  int adc_readingfront;
+  int adc_readingrightside; //not on the robot yet
+   
+  int leftintialspeed =60;
+  int rightintialspeed =60;
+  int leftSpeed;
+  int rightSpeed;
   
   //network code commented out for easy testing
   
