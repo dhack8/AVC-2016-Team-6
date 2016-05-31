@@ -135,8 +135,12 @@ int main(){
     int adc_readingfrontleft;
     int adc_readingbackleft;
     while(true){
-    printf("Front: %d",adc_readingfront);
-    printf("Front Left: %d",adc_readingfrontleft);
-    printf("Back Left: %d",adc_readingbackleft);
+        adc_readingfront = read_analog(0);
+        adc_readingfrontleft = read_analog(1);
+        adc_readingbackleft = read_analog(2);
+    printf("Front: %d\n",adc_readingfront);
+    printf("Front Left: %d\n",adc_readingfrontleft);
+    printf("Back Left: %d\n\n",adc_readingbackleft);
+    
     }
     }
