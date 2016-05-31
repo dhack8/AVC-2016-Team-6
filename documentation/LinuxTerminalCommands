@@ -1,0 +1,35 @@
+1) To start "ssh" (see Raspberry IP for command, instructions, and current IP)
+
+2) next "ls" to see the files and folders in the current directory
+
+3) next "cd" (stands for change directory)
+  usage: cd <folder name here> (moves you to that folder)
+  example: cd E101/Curiosity/Curiosity_1/AVC...
+  you can use tab to auto complete folder names
+  eg. cd E <press tab here> -> cd E101/
+      cd E101/C <press tab here> -> cd E101/Curiosity
+
+4) to git clone: type "sudo git clone https://github.com/dhack8/AVC-2016-Team-6"
+    This will create a new directory called AVC-2016-Team-6 if one does not already exist
+    Make sure you commit changes on github before git cloning!!
+
+5) to edit a file use "nano"
+    Usage: sudo nano <file name here> (opens that file in the nano editor)
+    eg. sudo nano Curiosity8.cpp
+    to save and exit ctrl+x, then press y to say yes to saving, then enter to accept the file name
+    ^ means CTRL in nano (and linux terminal in general)
+    
+6) You need to compile your code before you can run it. Use "gcc".
+  usage: sudo gcc -o <output name> <input file> -l<library you want to include>
+  eg. sudo gcc -o main Curiosity8.cpp -lE101 (this compiles Curiosity8.cpp into a program called main
+  
+7) To run the program use "./"
+  usage: sudo ./<compiled file name>
+  eg. sudo ./main (This will run main on the Pi. Make sure you're ready for it to run.)
+
+8) To stop it running, use CTRL+C
+    It will display a ^C
+    and then should stop
+    
+Handy tip: you /CAN/ paste in terminal, use CTRL+SHIFT+V instead of just CTRL+V
+Extra handy tip: this works for copy too. CTRL+SHIFT+C
