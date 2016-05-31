@@ -216,11 +216,11 @@ int main(){
         //code for making the 90 degree turns 
         if (adc_readingfront > 200){ 
             Sleep(0,250000);
-            if ((adc_readingfrontleft) > 400){   //has a wall on the left so will turn right
+            if ((adc_readingfrontleft) > 200){   //has a wall on the left so will turn right
                 rightSpeed = -60; 
                 leftSpeed = 60;
             }
-            if ((adc_readingfrontleft) < 400){    //has no wall on the left so will turn left
+            if ((adc_readingfrontleft) < 200){    //has no wall on the left so will turn left
                 rightSpeed = 60; 
                 leftSpeed = -60;
             }
