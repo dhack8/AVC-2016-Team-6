@@ -111,13 +111,11 @@ int main(){
       MOTOR_SPEED = 30;
       THRESHOLD = 110;
       kP = 0.5;
-      printf("----/ QUAD3 CODE ACTIVATED  \----");
     }
     if(quad3){
       adc_readingfrontleft = read_analog(1);
       adc_readingbackleft = read_analog(2);
         if((adc_readingfrontleft >400) && (adc_readingbackleft > 400)){
-          printf("----/ QUAD4 CODE ACTIVATED  \----");
           break;
         }
     }
@@ -144,7 +142,6 @@ int main(){
       }
       //now we have the number of white pixels in the left and right vertical lines
       if(numFoundLeft > 90){ //either a T juntion or a left turn either way we want to turn left
-        printf("T junction/left turn \n");
         set_motor(1, 40);
         set_motor(2, 40);
         Sleep(0, 50000);
@@ -152,7 +149,6 @@ int main(){
         set_motor(2, 120);
         Sleep(0, 500000);
       }else if(numFoundRight > 90){ //a right turn, dont need to check left side bc if the left had tape we would have turned already
-        printf("Right turn \n");
         set_motor(1, 40);
         set_motor(2, 40);
         Sleep(0, 50000);
