@@ -1,4 +1,7 @@
 # AVC-2016-Team-6
+
+A little bit outdated with many similar/duplicate files.
+
 ####ENGR AVC Wiki: https://github.com/kaiwhata/ENGR101-2016/wiki
 ###Week 1 Checklist
 - [x] Everyone: Review Week 1 checklist.
